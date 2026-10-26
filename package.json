@@ -1,0 +1,55 @@
+{
+  "name": "@tecsom/apipos-js",
+  "version": "1.0.6",
+  "description": "Cliente JavaScript (ES modules para el navegador, con tipos TypeScript) para Apipos.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./strip-accents": {
+      "types": "./dist/strip-accents.d.ts",
+      "default": "./dist/strip-accents.js"
+    },
+    "./ticket-preview": {
+      "types": "./dist/ticket-preview.d.ts",
+      "default": "./dist/ticket-preview.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "default": "./dist/version.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "default": "./dist/types.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json",
+    "test": "npm run build && tsc -p tsconfig.test.json && node --test \"test/**/*.test.ts\"",
+    "sync-version": "node scripts/sync-version.ts",
+    "check-version": "node scripts/sync-version.ts --check",
+    "prepare": "npm run build",
+    "pack": "node -e \"fs.mkdirSync('release', { recursive: true })\" && npm pack --pack-destination release"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tecsom/apipos-js.git"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "typescript": "5.9.3"
+  }
+}
